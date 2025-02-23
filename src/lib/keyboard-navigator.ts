@@ -88,12 +88,3 @@ export function createKeyboardNavigator(props: Props) {
     },
   };
 }
-
-const KeyboardNavigatorContext = createContext<ReturnType<typeof createKeyboardNavigator>>();
-
-export const KeyboardNavigator = KeyboardNavigatorContext.Provider;
-
-export function useKeyboardNavigator() {
-  const ctx = useContext(KeyboardNavigatorContext);
-  return ctx;
-}

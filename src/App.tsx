@@ -1,5 +1,5 @@
 import { createSignal, type Component } from "solid-js";
-import { createKeyboardNavigator, KeyboardNavigator, useKeyboardNavigator } from "./lib/keyboard-navigator";
+import { createKeyboardNavigator } from "./lib/keyboard-navigator";
 import { Checkbox } from "./components/ui/checkbox";
 import { For } from "solid-js";
 
@@ -21,7 +21,7 @@ const App: Component = () => {
     { title: "Issue 9" },
   ]);
 
-  const navigator = createKeyboardNavigator({
+  createKeyboardNavigator({
     target: "[data-element='issue']",
     onSelect: (el) => (el.querySelector("a") as HTMLElement).click(),
     onPeek: (el, event) => {
@@ -35,9 +35,7 @@ const App: Component = () => {
       <h1>Hello World!</h1>
       <h3>This is a solid app.</h3>
       <div class="flex flex-col gap-3">
-        <KeyboardNavigator value={navigator}>
-          <For each={issues()}>{(issue) => <Issue {...issue} />}</For>
-        </KeyboardNavigator>
+        <For each={issues()}>{(issue) => <Issue {...issue} />}</For>
       </div>
     </main>
   );
